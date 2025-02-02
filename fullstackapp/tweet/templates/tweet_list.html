@@ -17,10 +17,10 @@
       <p class="text-xs font-medium text-gray-500">@{{tweet.user}}</p>
     </div>
     <div class="px-6 pt-4 pb-2">
-      
+      {%if tweet.user == user%}
       <a href="{% url 'edit_tweet' tweet.id%}" class="bg-blue-600 text-white px-4 py-1 rounded mr-2">Edit</a>
       <a href="{% url 'delete_tweet' tweet.id%}" class="border text-red-600 border-red-600 px-4 py-1 rounded mr-2">Delete</a>
-      
+      {%endif%}
     </div>
   </div>
   {% endfor %}
