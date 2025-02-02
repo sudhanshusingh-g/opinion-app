@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block title %} All Tweets {% endblock %}
+{% block content %}
+<div class="">
+    <div>
+        <a href="{%url 'create_tweet'%}">Post opinion</a>
+    </div>
+  {% for tweet in tweets %}
+  <div class="max-w-sm rounded overflow-hidden shadow-lg border">
+    <img class="w-full" src="{{tweet.photo.url}}" alt="Sunset in the mountains" />
+    <div class="px-6 py-4 border-t-[1px]">
+      <div class="font-bold text-xl mb-2">{{tweet.text}}</div>
+      <p class=" text-base">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
+        quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
+        nihil.
+      </p>
+      <p class="text-xs font-medium text-gray-500">@{{tweet.user}}</p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      
+      <a href="{% url 'edit_tweet' tweet.id%}" class="bg-blue-600 text-white px-4 py-1 rounded mr-2">Edit</a>
+      <a href="{% url 'delete_tweet' tweet.id%}" class="border text-red-600 border-red-600 px-4 py-1 rounded mr-2">Delete</a>
+      
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
